@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.EnterpriseServices.CompensatingResourceManager;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,7 +30,7 @@ namespace Ecommerce.Controllers
             }
 
 
-            var checkProduct = db.ShoppingCartItems.Where(model => model.ProductID == id).FirstOrDefault();
+            var checkProduct = db.ShoppingCartItems.FirstOrDefault(model => model.ProductID == id && model.CartID == check.CartID);
 
             if (checkProduct == null)
             {
@@ -108,7 +109,9 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult DeleteItem(int id)
         {
-            var item = db.ShoppingCartItems.SingleOrDefault(i => i.ProductID == id);
+            var num = (int)Session["UserID"];
+            var check = db.ShoppingCarts.Where(model => model.UserID == num).FirstOrDefault();
+            var item = db.ShoppingCartItems.FirstOrDefault(model => model.ProductID == id && model.CartID == check.CartID);
 
             if (item != null)
             {
@@ -119,4 +122,4 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Cart");
         }
         }
-    }
+ }

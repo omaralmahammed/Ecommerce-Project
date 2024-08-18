@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Orange\\Desktop\\Orange Academy\\Oug\\Ecommerce project\\Ecommerce-Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4B281A0D-2B3F-4913-A166-F9FBD550DED0}|Ecommerce\\Ecommerce.csproj|c:\\users\\orange\\desktop\\orange academy\\oug\\ecommerce project\\ecommerce-project\\ecommerce\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B281A0D-2B3F-4913-A166-F9FBD550DED0}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B281A0D-2B3F-4913-A166-F9FBD550DED0}|Ecommerce\\Ecommerce.csproj|c:\\users\\orange\\desktop\\orange academy\\oug\\ecommerce project\\ecommerce-project\\ecommerce\\views\\cart\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4B281A0D-2B3F-4913-A166-F9FBD550DED0}|Ecommerce\\Ecommerce.csproj|solutionrelative:ecommerce\\views\\cart\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\Orange Academy\\Oug\\Ecommerce project\\Ecommerce-Project\\Ecommerce\\Views\\Cart\\Cart.cshtml",
+              "RelativeDocumentMoniker": "Ecommerce\\Views\\Cart\\Cart.cshtml",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\Orange Academy\\Oug\\Ecommerce project\\Ecommerce-Project\\Ecommerce\\Views\\Cart\\Cart.cshtml",
+              "RelativeToolTip": "Ecommerce\\Views\\Cart\\Cart.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T18:11:04.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\Orange\\Desktop\\Orange Academy\\Oug\\Ecommerce project\\Ecommerce-Project\\Ecommerce\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Ecommerce\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\Orange\\Desktop\\Orange Academy\\Oug\\Ecommerce project\\Ecommerce-Project\\Ecommerce\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Ecommerce\\Controllers\\CartController.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAA5wG8AAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T17:50:33.49Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
