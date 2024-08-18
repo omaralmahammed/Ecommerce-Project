@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EcommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserInformation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="picture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="first_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="alternativePhoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="postcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="otp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ShoppingCarts" Relationship="EcommerceModel.FK__ShoppingC__UserI__534D60F1" FromRole="UserInformation" ToRole="ShoppingCart" />
+  </EntityType>
+  <EntityContainer Name="EcommerceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserInformations" EntityType="Self.UserInformation" />
+    <EntitySet Name="Categories" EntityType="EcommerceModel.Category" />
+    <EntitySet Name="Products" EntityType="EcommerceModel.Product" />
+    <AssociationSet Name="FK__Product__categor__47DBAE45" Association="EcommerceModel.FK__Product__categor__47DBAE45">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="ShoppingCarts" EntityType="EcommerceModel.ShoppingCart" />
+    <EntitySet Name="ShoppingCartItems" EntityType="EcommerceModel.ShoppingCartItem" />
+    <AssociationSet Name="FK__ShoppingC__Produ__5812160E" Association="EcommerceModel.FK__ShoppingC__Produ__5812160E">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShoppingC__CartI__571DF1D5" Association="EcommerceModel.FK__ShoppingC__CartI__571DF1D5">
+      <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ShoppingC__UserI__534D60F1" Association="EcommerceModel.FK__ShoppingC__UserI__534D60F1">
+      <End Role="UserInformation" EntitySet="UserInformations" />
+      <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="EcommerceModel.FK__Product__categor__47DBAE45" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="image_URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="categoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="EcommerceModel.FK__Product__categor__47DBAE45" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="ShoppingCartItems" Relationship="EcommerceModel.FK__ShoppingC__Produ__5812160E" FromRole="Product" ToRole="ShoppingCartItem" />
+  </EntityType>
+  <Association Name="FK__Product__categor__47DBAE45">
+    <End Type="EcommerceModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="EcommerceModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ShoppingCartItems" Relationship="EcommerceModel.FK__ShoppingC__CartI__571DF1D5" FromRole="ShoppingCart" ToRole="ShoppingCartItem" />
+    <NavigationProperty Name="UserInformation" Relationship="EcommerceModel.FK__ShoppingC__UserI__534D60F1" FromRole="ShoppingCart" ToRole="UserInformation" />
+  </EntityType>
+  <EntityType Name="ShoppingCartItem">
+    <Key>
+      <PropertyRef Name="CartItemID" />
+    </Key>
+    <Property Name="CartItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Product" Relationship="EcommerceModel.FK__ShoppingC__Produ__5812160E" FromRole="ShoppingCartItem" ToRole="Product" />
+    <NavigationProperty Name="ShoppingCart" Relationship="EcommerceModel.FK__ShoppingC__CartI__571DF1D5" FromRole="ShoppingCartItem" ToRole="ShoppingCart" />
+  </EntityType>
+  <Association Name="FK__ShoppingC__Produ__5812160E">
+    <End Type="EcommerceModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="EcommerceModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ShoppingCartItem">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShoppingC__CartI__571DF1D5">
+    <End Type="EcommerceModel.ShoppingCart" Role="ShoppingCart" Multiplicity="1" />
+    <End Type="EcommerceModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShoppingCart">
+        <PropertyRef Name="CartID" />
+      </Principal>
+      <Dependent Role="ShoppingCartItem">
+        <PropertyRef Name="CartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ShoppingC__UserI__534D60F1">
+    <End Type="EcommerceModel.UserInformation" Role="UserInformation" Multiplicity="1" />
+    <End Type="EcommerceModel.ShoppingCart" Role="ShoppingCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInformation">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ShoppingCart">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

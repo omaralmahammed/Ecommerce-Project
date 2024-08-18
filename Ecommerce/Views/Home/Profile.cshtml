@@ -1,0 +1,133 @@
+﻿@model Ecommerce.Models.UserInformation
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="untree_co-section" style="margin-bottom:50em">
+    <div class="container">
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 pb-4" style="width: 100%; height: 300px;">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="text-center">Profile</h2>
+                            <br />
+                            @using (Html.BeginForm("Profile", "Home", FormMethod.Post, new { @onsubmit = "return displayAlert();" }))
+                            {
+                                <!-- Personal Information Section -->
+                                <p class="text-left">Personal Information</p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="text-black" required>First Name</label>
+                                        @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="text-black" required>Last Name</label>
+                                        @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <!-- Contact Information Section -->
+                                <p class="text-right mt-4">Contact Information</p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="text-black" required>Email</label>
+                                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", type = "email" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="text-black" required>Phone Number</label>
+                                        @Html.TextBoxFor(model => model.phoneNumber, new { @class = "form-control" })
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="text-black" required>Alternative Phone Number</label>
+                                        @Html.TextBoxFor(model => model.alternativePhoneNumber, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <!-- Location Information Section -->
+                                <p class="text-right mt-4">Address Information</p>
+                                <hr />
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="text-black" required>Country</label>
+                                        @Html.TextBoxFor(model => model.country, new { @class = "form-control" })
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label class="text-black" required>City</label>
+                                        @Html.TextBoxFor(model => model.city, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label class="text-black" required>Address</label>
+                                        @Html.TextBoxFor(model => model.address, new { @class = "form-control" })
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label class="text-black" required>Post Code</label>
+                                        @Html.TextBoxFor(model => model.postcode, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <!-- Email Section -->
+                                <p class="text-right mt-4">Password</p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="text-black" required>Current Password</label>
+                                        <input type="password" name="currentPassword" class="form-control" />
+                                        <p class="text-danger">@ViewBag.passwordError</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="text-black" required>New Password</label>
+                                        <input type="password" name="newPassword" class="form-control" />
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="text-black" required>Confirm New Password</label>
+                                        <input type="password" name="confirmNewPassword" class="form-control" />
+                                        <p class="text-danger">@ViewBag.newpasswordError</p>
+                                    </div>
+                                </div>
+
+                                <br />
+
+                                <!-- Save Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        Save
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @* Ensure SweetAlert is included *@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+        function displayAlert() {
+            Swal.fire({
+                title: "OTP was sent",
+                text: "Check your Email!",
+                showConfirmButton: false,
+                timer: 2000,
+            });
+
+            // Allow the form to be submitted after the alert
+            return true;
+        }
+    </script>
+}

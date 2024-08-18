@@ -1,0 +1,104 @@
+﻿@model Ecommerce.Models.UserInformation
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Registration</h1>
+                    <h4 class="mb-4" style="color: white">
+                        Register Now and Enhance Your Shopping Experience!
+                    </h4>
+                    <br /><br />
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="hero-img-wrap">
+                    <img src="~/images/chair-vmake.png" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+<!-- Start Contact Form -->
+<div class="untree_co-section">
+    <div class="container">
+        <div class="block">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 pb-4">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h2 class="text-center">Sign Up Now</h2>
+
+                            @using (Html.BeginForm())
+                            {
+                                <div class="form-group">
+                                    <label class="text-black" required>First Name</label>
+                                    @Html.TextBoxFor(model => model.first_name, new { @class = "form-control", required = "required" })
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-black" required>Last Name</label>
+                                    @Html.TextBoxFor(model => model.last_name, new { @class = "form-control", required = "required" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-black" required>Email</label>
+                                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", type = "email", required = "required" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-black" required>Password</label>
+                                    @Html.PasswordFor(model => model.password, new { @class = "form-control", required = "required" })
+
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label class="text-black" required>Confirm Password</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           name="confirmPassword"
+                                           required />
+                                    <span id="confirmPasswordError" class="text-danger">@ViewBag.confirmError</span>
+
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">
+                                        Sign Up
+                                    </button>
+                                </div>
+
+                                <br /> 
+
+                                       <div class="text-center">
+                                           <span>Do you have an account!'</span> @Html.ActionLink("Sign in", "Login", "Login", null, new { @class = "text-primary" })
+                                       </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0);
+        }
+</style>

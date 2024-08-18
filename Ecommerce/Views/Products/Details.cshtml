@@ -1,0 +1,72 @@
+﻿@model Ecommerce.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>Details</h1>
+                </div>
+            </div>
+            <div class="col-lg-7">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+<br />
+<div class="container mt-5"  style="margin-bottom:50px">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <h1 class="product-title">@Model.name</h1>
+            <div class="product-reviews mb-3">
+                <!-- Example stars and reviews -->
+                <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                <span>4.5 (120 Reviews)</span>
+            </div>
+            <h3 class="product-price">
+                <strong>@Model.price $</strong>
+            </h3>
+            <h4 class="product-description mt-3">
+                @Model.description
+            </h4>
+
+            @if (Session["UserID"] != null)
+            {
+                <div class="product-purchase-options mt-4">
+                    @Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { id = Model.ID }, new { @class = "btn btn-secondary me-2" })
+                </div>
+            }
+            else
+            {
+                <div class="product-purchase-options mt-4">
+                    @Html.ActionLink("Add to Cart", "Login", "Login",null, new { @class = "btn btn-secondary me-2" })
+                </div>
+            }
+            <!-- Additional Product Info -->
+            <div class="additional-info mt-5">
+                <h5>Product Details</h5>
+                <ul>
+                    <li>Material: Ceramic</li>
+                    <li>Dimensions: 24" H x 12" W x 12" D</li>
+                    <li>Weight: 10 lbs</li>
+                    <li>Color: White</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <img src="~/images/@Model.image_URL" alt="@Model.name" class="img-fluid product-thumbnail w-100">
+        </div>
+    </div>
+</div>
+
